@@ -135,7 +135,9 @@
 
 }
 .review--img img{
-    width: 90px;
+    width: 95px;
+    clip-path: circle();
+
 }
 
 .review--content{
