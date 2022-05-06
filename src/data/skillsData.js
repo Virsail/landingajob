@@ -5,7 +5,6 @@
     'React',
     'Django',
     'Bootstrap',
-    'Node JS',
     'Angular',
     'Python',
     'Typescript',

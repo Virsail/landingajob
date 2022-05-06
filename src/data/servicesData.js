@@ -10,16 +10,10 @@ export const servicesData = [
  
     {
         id: 2,
-        title: 'Web Design',
+        title: 'Blog Writing',
         icon: <BiPencil /> 
     },
  
-   
-     {
-         id: 5,
-         title: 'Tutoring',
-         icon: <FaChalkboardTeacher />
-     },
     {
         id: 6,
         title: 'FrontEnd Engineering',
