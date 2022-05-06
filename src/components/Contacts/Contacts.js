@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react';
+import { SMTPClient } from 'emailjs';
+import emailjs from 'emailjs-com';
 import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
@@ -167,7 +169,7 @@ function Contacts() {
             style={{ backgroundColor: theme.secondary }}
         >
             <div className='contacts--container'>
-                <h1 style={{ color: theme.primary }}>Contacts</h1>
+                <h1 style={{ color: theme.primary }}>Contact me</h1>
                 <div className='contacts-body'>
                     <div className='contacts-form'>
                         <form onSubmit={handleContactForm}>
@@ -435,5 +437,8 @@ function Contacts() {
         </div>
     );
 }
+
+
+
 
 export default Contacts;
