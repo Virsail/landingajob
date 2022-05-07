@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { ThemeContext } from './contexts/ThemeContext';
 import { Main, BlogPage, ProjectPage } from './pages'
 import { BackToTop } from './components'
+import Mailer from './components/mailer'
 import ScrollToTop from './utils/ScrollToTop'
 
 import './App.css'
@@ -29,6 +30,9 @@ function App() {
         </Switch>
       </Router>
       <BackToTop />
+      <div className='App'>
+        <Mailer/>
+      </div>
     </div>
   );
 }
