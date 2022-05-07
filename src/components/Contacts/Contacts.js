@@ -1,6 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { SMTPClient } from 'emailjs';
-import emailjs from 'emailjs-com';
 import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
@@ -437,8 +435,6 @@ function Contacts() {
         </div>
     );
 }
-
-
 
 
 export default Contacts;
