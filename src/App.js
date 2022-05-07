@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { ThemeContext } from './contexts/ThemeContext';
@@ -31,7 +33,6 @@ function App() {
       </Router>
       <BackToTop />
       <div className='App'>
-        <Mailer/>
       </div>
     </div>
   );

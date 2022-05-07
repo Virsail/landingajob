@@ -11,7 +11,7 @@ const Mailer = () => {
     }
     return ( 
         <div>
-            <h1>Contact Form</h1>
+            <h1>Write Me An Email</h1>
             <form onSubmit={sendEmail}>
                 <label>name</label>
                 <input type="text" name="name"/>

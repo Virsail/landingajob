@@ -3,6 +3,8 @@ import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
 import isEmail from 'validator/lib/isEmail';
+import { Send } from "@material-ui/icons";
+import emailjs from 'emailjs-com';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     FaTwitter,
@@ -132,32 +134,10 @@ function Contacts() {
     const handleContactForm = (e) => {
         e.preventDefault();
 
-        if (name && email && message) {
-            if (isEmail(email)) {
-                const responseData = {
-                    name: name,
-                    email: email,
-                    message: message,
-                };
-
-                axios.post(contactsData.sheetAPI, responseData).then((res) => {
-                    console.log('success');
-                    setSuccess(true);
-                    setErrMsg('');
-
-                    setName('');
-                    setEmail('');
-                    setMessage('');
-                    setOpen(false);
-                });
-            } else {
-                setErrMsg('Invalid email');
-                setOpen(true);
-            }
-        } else {
-            setErrMsg('Enter all the fields');
-            setOpen(true);
-        }
+        emailjs.sendForm('service_66kzour','template_oxbwpid',e.target, '_idouojzDLgSPWuXj').then(res=> {
+            console.log(res)
+        }).catch(err=> console.log(err));
+        
     };
 
     return (
@@ -169,85 +149,19 @@ function Contacts() {
             <div className='contacts--container'>
                 <h1 style={{ color: theme.primary }}>Contact me</h1>
                 <div className='contacts-body'>
-                    <div className='contacts-form'>
-                        <form onSubmit={handleContactForm}>
-                            <div className='input-container'>
-                                <label htmlFor='Name' className={classes.label}>
-                                    Name
-                                </label>
-                                <input
-                                    placeholder='Your name'
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    type='text'
-                                    name='Name'
-                                    className={`form-input ${classes.input}`}
-                                />
-                            </div>
-                            <div className='input-container'>
-                                <label
-                                    htmlFor='Email'
-                                    className={classes.label}
-                                >
-                                    Email
-                                </label>
-                                <input
-                                    placeholder='Your email'
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                    type='email'
-                                    name='Email'
-                                    className={`form-input ${classes.input}`}
-                                />
-                            </div>
-                            <div className='input-container'>
-                                <label
-                                    htmlFor='Message'
-                                    className={classes.label}
-                                >
-                                    Message
-                                </label>
-                                <textarea
-                                    placeholder='Type your message....'
-                                    value={message}
-                                    onChange={(e) => setMessage(e.target.value)}
-                                    type='text'
-                                    name='Message'
-                                    className={`form-message ${classes.message}`}
-                                />
-                            </div>
+                    <div className='container border' style={{marginTop: '50px',width: '50%'}}>
+                    <form onSubmit={handleContactForm}>
+                <label>name</label>
+                <input type="text" name="name"/>
 
-                            <div className='submit-btn'>
-                                <button
-                                    type='submit'
-                                    className={classes.submitBtn}
-                                >
-                                    <p>{!success ? 'Send' : 'Sent'}</p>
-                                    <div className='submit-icon'>
-                                        <AiOutlineSend
-                                            className='send-icon'
-                                            style={{
-                                                animation: !success
-                                                    ? 'initial'
-                                                    : 'fly 0.8s linear both',
-                                                position: success
-                                                    ? 'absolute'
-                                                    : 'initial',
-                                            }}
-                                        />
-                                        <AiOutlineCheckCircle
-                                            className='success-icon'
-                                            style={{
-                                                display: !success
-                                                    ? 'none'
-                                                    : 'inline-flex',
-                                                opacity: !success ? '0' : '1',
-                                            }}
-                                        />
-                                    </div>
-                                </button>
-                            </div>
-                        </form>
+                <label>Email</label>
+                <input type="email" name="user_email"/>
+
+                <label>Message</label>
+                <textarea name="message" rows={4}/>
+                <input type="submit" value={Send}/>
+
+            </form>
                         <Snackbar
                             anchorOrigin={{
                                 vertical: 'top',
