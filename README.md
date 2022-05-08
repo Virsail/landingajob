@@ -18,9 +18,6 @@
 
 <br /><br />
 
-# Demo :movie_camera:
-![](https://raw.githubusercontent.com/PhantomScript/asset-container/main/developer-portfolio/demo.gif)
-## View live demo [here]().
 
 <br />
 
