@@ -1,7 +1,11 @@
-import React, { useContext, useState } from 'react';
-import { Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
+import React, { useContext, useEffect, useState } from 'react';
+import { IconButton, SnackbarContent, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from 'axios';
+import { Formik } from 'formik';
+import Snackbar from '../Snackbar';
+import { useRef } from "react";
+import { useForm } from "react-hook-form";
 import isEmail from 'validator/lib/isEmail';
 import { Send } from "@material-ui/icons";
 import emailjs from 'emailjs-com';
@@ -28,6 +32,8 @@ import { ThemeContext } from '../../contexts/ThemeContext';
 import { socialsData } from '../../data/socialsData';
 import { contactsData } from '../../data/contactsData';
 import './Contacts.css';
+
+
 
 function Contacts() {
     const [open, setOpen] = useState(false);
@@ -129,7 +135,36 @@ function Contacts() {
         },
     }));
 
+
+
     const classes = useStyles();
+
+
+    const SnackbarType = {
+    success: "success",
+    fail: "fail",
+  };
+
+
+   const snackbarRef = useRef(null);
+
+
+
+   function Reset() {
+    const {reset} = useForm<FormData>({
+        defaultValues:{
+            name:'',
+            email:'',
+            message:''
+        }
+    });
+}
+
+
+   
+
+   
+  
 
     const handleContactForm = (e) => {
         e.preventDefault();
@@ -149,82 +184,38 @@ function Contacts() {
             <div className='contacts--container'>
                 <h1 style={{ color: theme.primary }}>Contact me</h1>
                 <div className='contacts-body'>
-                    <div className='container border' style={{marginTop: '50px',width: '50%'}}>
+                    <div className='container--border' style={{marginTop: '50px',width: '55%', backgroundPosition:'center', backgroundSize:'cover' ,backgroundImage:`url('')`}}>
+                    
                     <form onSubmit={handleContactForm}>
-                <label>name</label>
-                <input type="text" name="name"/>
+                <label>Name</label>
+                <input type="text" name="name" placeholder='Your Name'/>
 
                 <label>Email</label>
-                <input type="email" name="user_email"/>
+                <input type="email" name="user_email" placeholder='Your Email'/>
 
                 <label>Message</label>
-                <textarea name="message" rows={4}/>
-                <input type="submit" value={Send}/>
+                <textarea name="message" rows={4} placeholder='write me'/>
+
+                <div className='buttontu'>
+            
+
+                <button className='showSnackbarBttn' onClick={() => {snackbarRef.current.show();}}  type="submit"  value={Send}> Send </button>
+
+                <Snackbar
+        ref={snackbarRef}
+        message="Thank you for contacting Virsail your Mail message has been delivered to his inbox!"
+        type={SnackbarType.success}
+      />
+                </div>
 
             </form>
-                        <Snackbar
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'center',
-                            }}
-                            open={open}
-                            autoHideDuration={4000}
-                            onClose={handleClose}
-                        >
-                            <SnackbarContent
-                                action={
-                                    <React.Fragment>
-                                        <IconButton
-                                            size='small'
-                                            aria-label='close'
-                                            color='inherit'
-                                            onClick={handleClose}
-                                        >
-                                            <CloseIcon fontSize='small' />
-                                        </IconButton>
-                                    </React.Fragment>
-                                }
-                                style={{
-                                    backgroundColor: theme.primary,
-                                    color: theme.secondary,
-                                    fontFamily: 'var(--primaryFont)',
-                                }}
-                                message={errMsg}
-                            />
-                        </Snackbar>
+                   
                     </div>
 
                     <div className='contacts-details'>
-                        <a
-                            href={`mailto:${contactsData.email}`}
-                            className='personal-details'
-                        >
-                            <div className={classes.detailsIcon}>
-                                <FiAtSign />
-                            </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.email}
-                            </p>
-                        </a>
-                        <a
-                            href={`tel:${contactsData.phone}`}
-                            className='personal-details'
-                        >
-                            <div className={classes.detailsIcon}>
-                                <FiPhone />
-                            </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.phone}
-                            </p>
-                        </a>
-                        <div className='personal-details'>
-                            <div className={classes.detailsIcon}>
-                                <HiOutlineLocationMarker />
-                            </div>
-                            <p style={{ color: theme.tertiary }}>
-                                {contactsData.address}
-                            </p>
-                        </div>
+              
+                   
+                   
 
                         <div className='socialmedia-icons'>
                             {socialsData.twitter && (
@@ -247,16 +238,7 @@ function Contacts() {
                                     <FaGithub aria-label='GitHub' />
                                 </a>
                             )}
-                            {socialsData.linkedIn && (
-                                <a
-                                    href={socialsData.linkedIn}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaLinkedinIn aria-label='LinkedIn' />
-                                </a>
-                            )}
+                         
                             {socialsData.instagram && (
                                 <a
                                     href={socialsData.instagram}
@@ -267,76 +249,10 @@ function Contacts() {
                                     <FaInstagram aria-label='Instagram' />
                                 </a>
                             )}
-                            {socialsData.medium && (
-                                <a
-                                    href={socialsData.medium}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaMediumM aria-label='Medium' />
-                                </a>
-                            )}
-                            {socialsData.blogger && (
-                                <a
-                                    href={socialsData.blogger}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaBloggerB aria-label='Blogger' />
-                                </a>
-                            )}
-                            {socialsData.youtube && (
-                                <a
-                                    href={socialsData.youtube}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaYoutube aria-label='YouTube' />
-                                </a>
-                            )}
-                            {socialsData.reddit && (
-                                <a
-                                    href={socialsData.reddit}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaRedditAlien aria-label='Reddit' />
-                                </a>
-                            )}
-                            {socialsData.stackOverflow && (
-                                <a
-                                    href={socialsData.stackOverflow}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaStackOverflow aria-label='Stack Overflow' />
-                                </a>
-                            )}
-                            {socialsData.codepen && (
-                                <a
-                                    href={socialsData.codepen}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaCodepen aria-label='CodePen' />
-                                </a>
-                            )}
-                            {socialsData.gitlab && (
-                                <a
-                                    href={socialsData.gitlab}
-                                    target='_blank'
-                                    rel='noreferrer'
-                                    className={classes.socialIcon}
-                                >
-                                    <FaGitlab aria-label='GitLab' />
-                                </a>
-                            )}
+                            
+                            
+                          
+                         
                         </div>
                     </div>
                 </div>

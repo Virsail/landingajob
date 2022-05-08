@@ -77,7 +77,7 @@ function BlogPage() {
                 <Link to="/">
                     <AiOutlineHome className={classes.home}/>
                 </Link>
-                <h1 style={{color: theme.secondary}}>Blogs</h1>
+                <h1 style={{color: theme.secondary}}>My Blogs</h1>
             </div>
             <div className="blogPage--container">
                 <div className="blog--search">

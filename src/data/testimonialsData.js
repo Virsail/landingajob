@@ -16,7 +16,7 @@ export const testimonialsData = [
     },
     {
         id: 2,
-        name: 'Anne Khisa',
+        name: 'Shanice Khanali',
         title: 'KCB Group Ltd Head Of Channels Department',
         text: "This is a very talented colleague, you can take my word.",
         image: annekhi

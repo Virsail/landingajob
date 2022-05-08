@@ -16,6 +16,44 @@
     pointer-events: none;
 }
 
+.container--border {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+input[type=text], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+
+input[type=email], select, textarea {
+    width: 100%; /* Full width */
+    padding: 12px; /* Some padding */ 
+    border: 1px solid #ccc; /* Gray border */
+    border-radius: 4px; /* Rounded borders */
+    box-sizing: border-box; /* Make sure that padding and width stays in place */
+    margin-top: 6px; /* Add a top margin */
+    margin-bottom: 16px; /* Bottom margin */
+    resize: vertical /* Allow the user to vertically resize the textarea (not horizontally) */
+  }
+button[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+button[type=submit]:hover {
+    background-color: #45a049;
+  }
 .contacts--container {
     display: flex;
     flex-direction: column;
@@ -26,6 +64,7 @@
     height: 100%;
     margin-top: 2rem;
 }
+
 
 .contacts--container > h1 {
     font-family: var(--primaryFont);
@@ -107,6 +146,65 @@
     font-size: 16px;
     font-family: var(--primaryFont);
 }
+
+
+/* the coming snackbar */
+
+.snackbar {
+    position: fixed;
+    left: 50%;
+    top: 5%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 60px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .snackbar .symbol {
+    flex: 20%;
+  }
+  
+  .snackbar .message {
+    flex: 80%;
+    text-align: start;
+    font-weight: bold;
+  }
+  
+  #show {
+    visibility: visible;
+    animation: fadeIn 0.5s, fadeOut 0.5s 2.5s;
+  }
+  #hide {
+    visibility: hidden;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      bottom: 0;
+      opacity: 0;
+    }
+    to {
+      bottom: 30px;
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      bottom: 30px;
+      opacity: 1;
+    }
+    to {
+      bottom: 0;
+      opacity: 0;
+    }
+  }
+
+
+/* */
 
 .submit-icon {
     display: flex;
