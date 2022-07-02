@@ -153,22 +153,10 @@
 ## Netlify
 | Site   | Docs  | Demo  |
 | :-------------: |:-------------: |:-------------: |
-| [Netlify](https://www.netlify.com/) | [3 ways to deploy React apps to Netlify](https://blog.logrocket.com/3-ways-to-deploy-react-apps-to-netlify/) | [Youtube](https://www.youtube.com/watch?v=sGBdp9r2GSg) |
-## Firebase
-| Site   | Docs  | Demo  |
-| :-------------: |:-------------: |:-------------: |
-| [Firebase](https://firebase.google.com/docs/hosting) | [Deploy a React App with Firebase](https://medium.com/swlh/how-to-deploy-a-react-app-with-firebase-hosting-98063c5bf425) | [Youtube](https://www.youtube.com/watch?v=1wZw7RvXPRU) |
+| [Netlify](https://www.netlify.com/) | [3 ways to deploy React apps to Netlify](https://blog.logrocket.com/3-ways-to-deploy-react-apps-to-netlify/) |
 
 
-## Heroku
-| Site   | Docs  | Demo  |
-| :-------------: |:-------------: |:-------------: |
-| [Heroku](https://www.heroku.com/) | [Deploying React App on Heroku from GitHub](https://medium.com/make-it-heady/deploying-create-react-app-on-heroku-from-github-49447561f670) | [Youtube](https://www.youtube.com/watch?v=dn4mmfbletg) |
 
-## Github Pages
-| Site   | Docs  | Demo  |
-| :-------------: |:-------------: |:-------------: |
-| [GitHub Pages](https://pages.github.com/) | [Deploying React App on GitHub Pages from GitHub](https://create-react-app.dev/docs/deployment/#github-pages) | [Youtube](https://youtu.be/F8s4Ng-re0E) |
 
 <br />
 
